@@ -10,26 +10,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class HealthController {
 
     @GetMapping("/health")
-    public Map<String, String> health() 
-    { 
+    public Map<String, String> health() {
         return Map.of(
-            "status", "UP",
-            "timestamp", LocalDateTime.now().toString(),
-            "service" , "Delivery Api",
-            "JavaVersion", System.getProperty("java.version")
-            );                        
+                "status: ", "UP",
+                "timestamp", LocalDateTime.now().toString(),
+                "service", "Delivery API",
+                "javaVersion", System.getProperty("java.version"));
     }
 
     @GetMapping("/info")
-    public AppInfo info() 
-    {
+    public AppInfo info() {
         return new AppInfo(
-            "Delivery Api",
-            "1.0.0",
-            "JDK 21",
-            "Spring Boot 3.5.6"
-        );        
+                "Delivery Api",
+                "1.0.0",
+                "JDK 21",
+                "Spring Boot 3.5.6");
     }
 
-    public record AppInfo(String name, String version, String javaVersion, String springBootVersion) {}
+    public record AppInfo(String name, String version, String javaVersion, String springBootVersion) {
+    }
 }
